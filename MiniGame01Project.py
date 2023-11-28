@@ -3,12 +3,24 @@ from tkinter import *
 root = Tk()
 t = Turtle()
 t.speed(1)
+def orientacao_front():
+    distancia = int(input('Quantos pixels a percorrer? '))
+    t.forward(distancia)
+    return distancia
+
+def orientacao_back():
+    distancia = int(input('Quantos pixels a percorrer? '))
+    t.backward(distancia)
+    return distancia
+
+
+
 while True:
-    print('----- Bem-Vindo ao minigame "TURTLE", siga as orientações para joga-lo, considerena direção inicial seno referente a essa seta =>-----')
+    print('----- Bem-Vindo ao minigame "TURTLE", siga as orientações para joga-lo, considere  a direção inicial sendo referente a essa seta =>-----')
     orientação = input('Qual sentido você deseja movimentar a turtle: Direita(d), Esquerda(e), Para frente(f), Para atras(a): ')
     if orientação ==  'd' or orientação == 'e':
         graus = int(input(f'Quantos graus deseja girar no sentido {orientação}: '))
-    distancia = int(input('Quantos pixels a percorrer? '))
+        distancia = int(input('Quantos pixels a percorrer? '))
     if orientação == 'd':
         t.right(graus)
         t.forward(distancia)
@@ -16,9 +28,9 @@ while True:
         t.left(graus)
         t.forward(distancia)
     elif orientação == 'f':
-        t.forward(distancia)
-    elif orientação == 'b':
-        t.backward(distancia)
+        orientacao_front()
+    elif orientação == 'a':
+        orientacao_back()
     else:
         print('[ERRO]reinicie o jogo e insira dados válidos')
         break
